@@ -42,23 +42,22 @@ IS
     FUNCTION FormatRDTMessage
     (
         i_input_message IN VARCHAR2,
-        i_station_id dcsdba.workstation.station_id%TYPE DEFAULT NULL,
         i_screen_width NUMBER DEFAULT NULL
     ) RETURN VARCHAR2
     IS
          l_last_whitespace_position NUMBER(2);
     BEGIN
-        IF LENGTH(i_message) <= i_screen_width OR i_message IS NULL THEN
-            RETURN i_message;
+        IF LENGTH(i_input_message) <= i_screen_width OR i_input_message IS NULL THEN
+            RETURN i_input_message;
         END IF;
 
-        l_last_whitespace_position:= INSTR(SUBSTR(i_message, 1, i_screen_width  + 1), ' ', -1);
+        l_last_whitespace_position:= INSTR(SUBSTR(i_input_message, 1, i_screen_width  + 1), ' ', -1);
 
         IF l_last_whitespace_position = 0 THEN
             l_last_whitespace_position:= i_screen_width;
         END IF;
 
-        RETURN RPAD(SUBSTR(i_message, 1, l_last_whitespace_position), i_screen_width)||FormatRDTMessage(SUBSTR(i_message, l_last_whitespace_position + 1), i_screen_width);
+        RETURN RPAD(SUBSTR(i_input_message, 1, l_last_whitespace_position), i_screen_width)||FormatRDTMessage(SUBSTR(i_input_message, l_last_whitespace_position + 1), i_screen_width);
     END FormatRDTMessage;
 
     /*************************
