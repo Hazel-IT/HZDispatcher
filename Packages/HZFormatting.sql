@@ -73,7 +73,7 @@ IS
     ) RETURN VARCHAR2
     IS
         lc_SMALLEST_SCREEN_WIDTH_ALLOWANCE CONSTANT NUMBER:= 10;
-        l_screen_width dcsdba.workstation.num_cols%TYPE:= i_screen_width;
+        l_screen_width dcsdba.workstation.screen_columns%TYPE:= i_screen_width;
     BEGIN
         IF (i_station_id IS NULL AND i_screen_width IS NULL) OR i_screen_width < lc_SMALLEST_SCREEN_WIDTH_ALLOWANCE THEN
             /* Do not try and process with badly passed data */
@@ -81,7 +81,7 @@ IS
         END IF;
 
         IF i_screen_width IS NULL THEN
-            SELECT w.num_cols
+            SELECT w.screen_columns
                 INTO l_screen_width
             FROM dcsdba.workstation w
             WHERE w.station_id = i_station_id;
