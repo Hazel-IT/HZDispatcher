@@ -24,8 +24,8 @@ IS
     FUNCTION FormatRDTMessage
     (
         i_input_message IN VARCHAR2,
-        i_station_id dcsdba.workstation.station_id%TYPE DEFAULT NULL,
-        i_screen_width NUMBER DEFAULT NULL
+        i_station_id IN dcsdba.workstation.station_id%TYPE DEFAULT NULL,
+        i_screen_width IN NUMBER DEFAULT NULL
     ) RETURN VARCHAR2;
 
 END HZFormatting;
@@ -42,7 +42,7 @@ IS
     FUNCTION FormatRDTMessage
     (
         i_input_message IN VARCHAR2,
-        i_screen_width NUMBER DEFAULT NULL
+        i_screen_width IN NUMBER DEFAULT NULL
     ) RETURN VARCHAR2
     IS
          l_last_whitespace_position NUMBER(2);
@@ -68,8 +68,8 @@ IS
     FUNCTION FormatRDTMessage
     (
         i_input_message IN VARCHAR2,
-        i_station_id dcsdba.workstation.station_id%TYPE DEFAULT NULL,
-        i_screen_width NUMBER DEFAULT NULL
+        i_station_id IN dcsdba.workstation.station_id%TYPE DEFAULT NULL,
+        i_screen_width IN NUMBER DEFAULT NULL
     ) RETURN VARCHAR2
     IS
         lc_SMALLEST_SCREEN_WIDTH_ALLOWANCE CONSTANT NUMBER:= 10;
